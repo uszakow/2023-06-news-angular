@@ -1,0 +1,12 @@
+<ng-container [ngSwitch]="type">
+  <h2 *ngSwitchCase="'title'">
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </h2>
+  <span *ngSwitchCase="'text'">
+    <ng-container [ngTemplateOutlet]="content"></ng-container>
+  </span>
+</ng-container>
+
+<ng-template #content>
+  <ng-content></ng-content>
+</ng-template>

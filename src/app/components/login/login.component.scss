@@ -1,0 +1,14 @@
+@import '/src/styles/variables';
+@import '/src/styles/functions';
+
+.login {
+  width: px(600);
+
+  &-wrap {
+    border-right: 2px solid $main;
+    border-bottom: 2px solid $main;
+    border-left: 2px solid $main;
+    border-bottom-right-radius: px(22);
+    border-bottom-left-radius: px(22);
+  }
+}

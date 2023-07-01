@@ -1,0 +1,4 @@
+<button [ngClass]="['button', type, 'flex-center', classes]" [disabled]="disabled || loading" (click)="click.emit()">
+  <div class="plus relative mr-1"></div>
+  {{label}}
+</button>
