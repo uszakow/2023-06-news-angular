@@ -18,6 +18,8 @@ import { LoaderComponent } from './components/ui/loader/loader.component';
 import { ModalComponent } from './components/ui/modal/modal.component';
 import { TabsComponent } from './components/ui/tabs/tabs.component';
 import { TypographyComponent } from './components/ui/typography/typography.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormatMessagePipe } from './pipes/format-message.pipe';
 
 @NgModule({
   declarations: [
@@ -37,8 +39,9 @@ import { TypographyComponent } from './components/ui/typography/typography.compo
     ModalComponent,
     TabsComponent,
     TypographyComponent,
+    FormatMessagePipe,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -8,11 +8,13 @@
 
     <app-input [(value)]="name" label="Nazwa użytkownika" [required]="true" placeholder="Wprowadź nazwę użytkownika" />
 
-    <app-input type="password" [(value)]="password" label="Hasłos"
+    <app-input type="password" [(value)]="password" label="Hasło"
       [placeholder]="activeTab === 'login' ? 'Wprowadź hasło' : 'Hasło ma zawierać co najmniej 4 znaki'"
       [required]="true" />
 
     <app-button classes="mt-2 mb-1 m-auto" [label]="activeTab === 'login' ? 'Zaloguj się' : 'Utwórz konto'"
-      [loading]="loading" (click)="test()" />
+      [loading]="loading" (clickButton)="activeTab === 'login' ? loginUser() : createUser()" />
+
+    <app-error-message *ngIf="error" [message]="error" />
   </div>
 </div>

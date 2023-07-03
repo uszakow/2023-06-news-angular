@@ -12,5 +12,5 @@ export class ButtonComponent {
   @Input() disabled: boolean = false;
   @Input() loading: boolean = false;
   @Input() classes: string = '';
-  @Output() click = new EventEmitter();
+  @Output() clickButton = new EventEmitter();
 }
