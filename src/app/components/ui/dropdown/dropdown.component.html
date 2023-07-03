@@ -1,1 +1,8 @@
-<p>dropdown works!</p>
+<div [class]="dropdownClasses" (mouseover)="type === 'simple' && setIsOpen(true)"
+  (mouseleave)="type === 'simple' && setIsOpen(false)">
+  <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
+
+  <div [class]="drodpownContentClasses">
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+  </div>
+</div>

@@ -1,4 +1,20 @@
 <nav class="navbar flex flex-justify-between px-3">
   <a routerLink="/" class="navbar-item">Wiadomości</a>
-  <a routerLink="/login" class="navbar-item">Zaloguj się</a>
+
+  <app-dropdown *ngIf="user; else login">
+    <ng-template #titleTemplate>
+      <div class="navbar-item user-name">
+        {{ user.name }}
+      </div>
+    </ng-template>
+    <ng-template #contentTemplate>
+      <a routerLink="/profile" class="dropdown-item">Strona użytkownika</a>
+      <button class="dropdown-item" (click)="logout()">Wyloguj się</button>
+    </ng-template>
+  </app-dropdown>
+
+  <ng-template #login>
+    <a routerLink="/login" class="navbar-item">Zaloguj się</a>
+  </ng-template>
+
 </nav>
