@@ -1,30 +1,27 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { UserDto } from 'src/interfaces/User.dto';
-import { BASE_URL } from 'config';
 import { Observable, map } from 'rxjs';
-import { getRequestOptions } from 'src/helpers/getRequestOptions';
 import { UserInterface } from 'src/interfaces/User.interface';
 import { CustomResponseInterface } from 'src/interfaces/CustomResponse.interface';
+import { ApiService } from './api.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  constructor(private apiService: ApiService) {}
 
   createUser(body: UserDto): Observable<CustomResponseInterface> {
-    return this.http.post<CustomResponseInterface>(`${BASE_URL}/user`, body);
+    return this.apiService.post<CustomResponseInterface>('user', body);
   }
 
   loginUser(body: UserDto): Observable<string> {
-    return this.http
-      .post<{ token: string }>(`${BASE_URL}/user/login`, body)
+    return this.apiService
+      .post<{ token: string }>('user/login', body)
       .pipe(map((response) => response.token));
   }
 
   getUser(token: string): Observable<UserInterface> {
-    const headers = getRequestOptions(token);
-    return this.http.get<UserInterface>(`${BASE_URL}/user`, { headers });
+    return this.apiService.get<UserInterface>('user', token);
   }
 }
