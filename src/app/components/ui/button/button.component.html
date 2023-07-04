@@ -1,4 +1,11 @@
-<button [ngClass]="['button', type, 'flex-center', classes]" [disabled]="disabled || loading" (click)="clickButton.emit()">
-  <div class="plus relative mr-1"></div>
-  {{label}}
+<button [ngClass]="['button', type, 'flex-center', classes]" [disabled]="disabled || loading"
+  (click)="clickButton.emit()">
+  <div *ngIf="type === 'adding'" class="plus relative mr-1"></div>
+
+  <ng-container *ngIf="loading; else labelTemplate">
+    <app-icon class="loader" name="loader"></app-icon>
+  </ng-container>
+  <ng-template #labelTemplate>
+    {{label}}
+  </ng-template>
 </button>

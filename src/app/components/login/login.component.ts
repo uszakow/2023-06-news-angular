@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnDestroy } from '@angular/core';
+import { finalize } from 'rxjs';
 import { StateService } from 'src/app/services/state.service';
 import { UserService } from 'src/app/services/user.service';
 import { CustomResponseInterface } from 'src/interfaces/CustomResponse.interface';
@@ -42,56 +43,64 @@ export class LoginComponent implements OnDestroy {
   };
 
   loginUser = async () => {
-    this.stateService.updateLoading(true);
+    this.loading = true;
 
     const body = {
       name: this.name,
       password: this.password,
     };
 
-    this.userService.loginUser(body).subscribe({
-      next: (token: string) => {
-        if (token) {
-          localStorage.setItem('token', token);
-        }
+    this.userService
+      .loginUser(body)
+      .pipe(
+        finalize(() => {
+          this.loading = false;
+        })
+      )
+      .subscribe({
+        next: (token: string) => {
+          if (token) {
+            localStorage.setItem('token', token);
+          }
 
-        this.stateService.updateUser();
-      },
-      error: (error: HttpErrorResponse) => {
-        const errorMessage =
-          error.error?.message ||
-          'Nie udało się zalogować, prosimy spróbować później';
-        this.showError(errorMessage);
-      },
-      complete: () => {
-        this.stateService.updateLoading(false);
-      },
-    });
+          this.stateService.updateUser();
+        },
+        error: (error: HttpErrorResponse) => {
+          const errorMessage =
+            error.error?.message ||
+            'Nie udało się zalogować, prosimy spróbować później';
+          this.showError(errorMessage);
+        },
+      });
   };
 
   createUser() {
-    this.stateService.updateLoading(true);
+    this.loading = true;
 
     const body = {
       name: this.name,
       password: this.password,
     };
 
-    this.userService.createUser(body).subscribe({
-      next: (response: CustomResponseInterface) => {
-        if (response.statusCode === 201) {
-          this.loginUser();
-        }
-      },
-      error: (error: HttpErrorResponse) => {
-        const errorMessage =
-          error.error?.message || 'Nie udało się stworzyć konto użytkownika';
-        this.showError(errorMessage);
-      },
-      complete: () => {
-        this.stateService.updateLoading(false);
-      },
-    });
+    this.userService
+      .createUser(body)
+      .pipe(
+        finalize(() => {
+          this.loading = false;
+        })
+      )
+      .subscribe({
+        next: (response: CustomResponseInterface) => {
+          if (response.statusCode === 201) {
+            this.loginUser();
+          }
+        },
+        error: (error: HttpErrorResponse) => {
+          const errorMessage =
+            error.error?.message || 'Nie udało się stworzyć konto użytkownika';
+          this.showError(errorMessage);
+        },
+      });
   }
 
   ngOnDestroy(): void {

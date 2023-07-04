@@ -20,6 +20,7 @@ import { TabsComponent } from './components/ui/tabs/tabs.component';
 import { TypographyComponent } from './components/ui/typography/typography.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormatMessagePipe } from './pipes/format-message.pipe';
+import { IconComponent } from './components/ui/icon/icon.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { FormatMessagePipe } from './pipes/format-message.pipe';
     TabsComponent,
     TypographyComponent,
     FormatMessagePipe,
+    IconComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],
