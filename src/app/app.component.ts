@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { StateService } from './services/state.service';
-import { Subscription } from 'rxjs';
+import { Subscription, combineLatest } from 'rxjs';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { ApiService } from './services/api.service';
 
@@ -18,6 +18,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   private routerSubscription: Subscription;
   private unauthorizedErrorSubscription: Subscription;
+  private redirectSubscription: Subscription;
 
   ngOnInit(): void {
     this.stateService.updateUser();
@@ -39,10 +40,26 @@ export class AppComponent implements OnInit, OnDestroy {
         localStorage.removeItem('token');
         this.stateService.updateUser();
       });
+
+    // redirect for logged/unlogged users
+    this.redirectSubscription = combineLatest([
+      this.stateService.loading$,
+      this.stateService.user$,
+    ]).subscribe(([isLoading, user]) => {
+      const pathname = this.router.url;
+
+      if (!isLoading && !user && pathname === '/profile') {
+        this.router.navigate(['/login']);
+      }
+      if (!isLoading && user && pathname === '/login') {
+        this.router.navigate(['/profile']);
+      }
+    });
   }
 
   ngOnDestroy(): void {
     this.routerSubscription.unsubscribe();
     this.unauthorizedErrorSubscription.unsubscribe();
+    this.redirectSubscription.unsubscribe();
   }
 }
