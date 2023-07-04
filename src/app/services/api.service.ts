@@ -57,4 +57,26 @@ export class ApiService {
         )
       );
   }
+
+  put<T>(url: string, body: any, token: string): Observable<T> {
+    const headers = this.getHeaders(token);
+    return this.http
+      .put<T>(`${this.baseUrl}/${url}`, body, { headers })
+      .pipe(
+        catchError((error: HttpErrorResponse) =>
+          this.handleResponseError(error)
+        )
+      );
+  }
+
+  delete<T>(url: string, token: string): Observable<T> {
+    const headers = this.getHeaders(token);
+    return this.http
+      .delete<T>(`${this.baseUrl}/${url}`, { headers })
+      .pipe(
+        catchError((error: HttpErrorResponse) =>
+          this.handleResponseError(error)
+        )
+      );
+  }
 }

@@ -1,8 +1,8 @@
 <ng-container [ngSwitch]="type">
-  <h2 *ngSwitchCase="'title'">
+  <h2 *ngSwitchCase="'title'" [class]="classes">
     <ng-container [ngTemplateOutlet]="content"></ng-container>
   </h2>
-  <span *ngSwitchCase="'text'">
+  <span *ngSwitchCase="'text'" [class]="classes">
     <ng-container [ngTemplateOutlet]="content"></ng-container>
   </span>
 </ng-container>

@@ -21,6 +21,8 @@ import { TypographyComponent } from './components/ui/typography/typography.compo
 import { HttpClientModule } from '@angular/common/http';
 import { FormatMessagePipe } from './pipes/format-message.pipe';
 import { IconComponent } from './components/ui/icon/icon.component';
+import { ShowNewsCountPipe } from './pipes/show-news-count.pipe';
+import { ProfileDataChangeComponent } from './components/profile/profile-data-change/profile-data-change.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { IconComponent } from './components/ui/icon/icon.component';
     TypographyComponent,
     FormatMessagePipe,
     IconComponent,
+    ShowNewsCountPipe,
+    ProfileDataChangeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

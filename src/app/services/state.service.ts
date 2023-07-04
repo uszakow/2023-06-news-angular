@@ -42,4 +42,9 @@ export class StateService {
 
     this.updateLoading(false);
   }
+
+  // getter for a value from the state, without subscribe function
+  getToken(): string | null {
+    return this.tokenSubject.getValue();
+  }
 }

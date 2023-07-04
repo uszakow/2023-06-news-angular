@@ -12,10 +12,10 @@ export class NavbarComponent implements OnInit {
 
   user: UserInterface | null = null;
 
-  logout = () => {
+  logout(): void {
     localStorage.removeItem('token');
     this.stateService.updateUser();
-  };
+  }
 
   ngOnInit(): void {
     this.stateService.user$.subscribe((user) => {

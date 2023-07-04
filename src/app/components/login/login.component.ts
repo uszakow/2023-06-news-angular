@@ -38,11 +38,11 @@ export class LoginComponent implements OnDestroy {
     }, 5000);
   }
 
-  setActiveTab = (newActiveTab: string): void => {
+  setActiveTab(newActiveTab: string) {
     this.activeTab = newActiveTab;
-  };
+  }
 
-  loginUser = async () => {
+  async loginUser(): Promise<void> {
     this.loading = true;
 
     const body = {
@@ -72,7 +72,7 @@ export class LoginComponent implements OnDestroy {
           this.showError(errorMessage);
         },
       });
-  };
+  }
 
   createUser() {
     this.loading = true;
