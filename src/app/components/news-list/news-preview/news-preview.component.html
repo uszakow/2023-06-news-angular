@@ -1,6 +1,6 @@
 <div class="news-preview p-1 mb-2">
   <app-typography classes="flex flex-justify-between flex-align-end" type="title">
-    <a [routerLink]="'news/' + news.id" class="news-preview-title">
+    <a [routerLink]="['news/', news.id]" class="news-preview-title">
       {{news.title}}
     </a>
     <div *ngIf="user?.id === news.author.id" class="flex">

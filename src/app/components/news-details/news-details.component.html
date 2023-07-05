@@ -1,1 +1,15 @@
-<p>news-details works!</p>
+<ng-container *ngIf="news; else notFoundTemplate">
+  <app-typography type="title">{{news.title}}</app-typography>
+
+  <p *ngFor="let item of content" class="news-p">
+    {{item}}
+  </p>
+
+  <div class="mt-2">
+    Autor: <span class="author">{{news.author.name}}</span>
+  </div>
+</ng-container>
+
+<ng-template #notFoundTemplate>
+  <app-not-found />
+</ng-template>
