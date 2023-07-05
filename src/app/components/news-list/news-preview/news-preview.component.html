@@ -1,0 +1,29 @@
+<div class="news-preview p-1 mb-2">
+  <app-typography classes="flex flex-justify-between flex-align-end" type="title">
+    <a [routerLink]="'news/' + news.id" class="news-preview-title">
+      {{news.title}}
+    </a>
+    <div *ngIf="user?.id === news.author.id" class="flex">
+      <app-button type="inline" label="Edytuj" (clickButton)="isEditNewsModalOpen=true" />
+      <app-button classes="ml-2" type="inline" label="Usuń" (clickButton)="isDeleteNewsModalOpen=true" />
+    </div>
+  </app-typography>
+
+  <div class="news-preview-content">
+    <p *ngFor="let item of content">{{item}}</p>
+  </div>
+
+  <app-news-manage-modal [isOpen]="isEditNewsModalOpen" modalTitle="Edytowanie wiadomości"
+    [newsTitle]="updatedNewsTitle" [newsContent]="updatedNewsContent" [loading]="loading" [error]="error"
+    (changeNewsTitle)="updatedNewsTitle = $event" (changeNewsContent)="updatedNewsContent = $event"
+    (manageNews)="updateNews()" (closeModal)="closeEditNewsModal()" />
+
+  <app-modal title="Usuń wiadomość" [isOpen]="isDeleteNewsModalOpen" (closeModal)="closeDeleteNewsModal()">
+    <app-typography type="text">Potwierdź usunięcie tej wiadomości.</app-typography>
+
+    <app-button classes="mt-2 m-auto" type="danger" label="Usuń wiadomość" [loading]="loading"
+      (clickButton)="deleteNews()" />
+
+    <app-error-message *ngIf="error" [message]="error" />
+  </app-modal>
+</div>

@@ -23,10 +23,6 @@ export class ProfileDataChangeComponent {
     private userService: UserService
   ) {}
 
-  getToken(): string | null {
-    return this.stateService.getToken();
-  }
-
   openChangeNameModal(): void {
     this.modalName = 'name';
     this.isModalOpen = true;
@@ -62,7 +58,7 @@ export class ProfileDataChangeComponent {
       body.password = this.password;
     }
 
-    const token = this.getToken();
+    const token = this.stateService.getToken();
     if (token) {
       this.loading = true;
       this.userService
@@ -86,7 +82,7 @@ export class ProfileDataChangeComponent {
   }
 
   deleteUser() {
-    const token = this.getToken();
+    const token = this.stateService.getToken();
     if (token) {
       this.loading = true;
       this.userService

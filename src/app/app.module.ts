@@ -23,6 +23,9 @@ import { FormatMessagePipe } from './pipes/format-message.pipe';
 import { IconComponent } from './components/ui/icon/icon.component';
 import { ShowNewsCountPipe } from './pipes/show-news-count.pipe';
 import { ProfileDataChangeComponent } from './components/profile/profile-data-change/profile-data-change.component';
+import { NewsPreviewComponent } from './components/news-list/news-preview/news-preview.component';
+import { NewsManageModalComponent } from './components/news-list/news-manage-modal/news-manage-modal.component';
+import { NewsAddComponent } from './components/news-list/news-add/news-add.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { ProfileDataChangeComponent } from './components/profile/profile-data-ch
     IconComponent,
     ShowNewsCountPipe,
     ProfileDataChangeComponent,
+    NewsPreviewComponent,
+    NewsManageModalComponent,
+    NewsAddComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

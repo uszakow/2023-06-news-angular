@@ -1,1 +1,3 @@
-<p>news-list works!</p>
+<app-news-preview *ngFor="let item of news; trackBy: trackByNewsId" [news]="item" (newsChange)="getNewsList()" />
+
+<app-news-add (newsChange)="getNewsList()" />

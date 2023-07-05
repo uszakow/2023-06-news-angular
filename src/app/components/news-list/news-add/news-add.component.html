@@ -1,0 +1,5 @@
+<app-button classes="mt-2" type="adding" label="Dodaj nową wiadomość" (clickButton)="isModalOpen = true" />
+
+<app-news-manage-modal [isOpen]="isModalOpen" modalTitle="Dodanie nowej wiadomości" [newsTitle]="newsTitle"
+  [newsContent]="newsContent" [loading]="loading" [error]="error" (changeNewsTitle)="newsTitle = $event"
+  (changeNewsContent)="newsContent = $event" (manageNews)="createNews()" (closeModal)="closeModal()" />
