@@ -3,8 +3,8 @@
     {{label}}{{required && ' *'}}
   </label>
 
-  <textarea *ngIf="type === 'textarea'; else input" [id]="label" [value]="value" [placeholder]="placeholder" [required]="required"
-    [rows]="rowsCount" (change)="onChange($event)"></textarea>
+  <textarea *ngIf="type === 'textarea'; else input" [id]="label" [value]="value" [placeholder]="placeholder"
+    [required]="required" [rows]="rowsCount" (change)="onChange($event)"></textarea>
 
   <ng-template #input>
     <input [id]="label" [type]="type" [value]="value" [placeholder]="placeholder" [required]="required"

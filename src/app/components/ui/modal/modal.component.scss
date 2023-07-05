@@ -1,6 +1,6 @@
-@import '/src/styles/variables';
-@import '/src/styles/functions';
-@import '/src/styles/mixins';
+@import "/src/styles/variables";
+@import "/src/styles/functions";
+@import "/src/styles/mixins";
 
 .modal {
   @include position(fixed);
@@ -65,7 +65,7 @@
 
       &::before,
       &::after {
-        content: '';
+        content: "";
         position: absolute;
         top: px(14);
         left: px(1.5);

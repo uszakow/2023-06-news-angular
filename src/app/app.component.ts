@@ -10,15 +10,15 @@ import { ApiService } from './services/api.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
+  private routerSubscription: Subscription;
+  private unauthorizedErrorSubscription: Subscription;
+  private redirectSubscription: Subscription;
+
   constructor(
     private router: Router,
     private apiService: ApiService,
     public stateService: StateService
   ) {}
-
-  private routerSubscription: Subscription;
-  private unauthorizedErrorSubscription: Subscription;
-  private redirectSubscription: Subscription;
 
   ngOnInit(): void {
     this.stateService.updateUser();

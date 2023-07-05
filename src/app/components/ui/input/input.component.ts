@@ -6,13 +6,13 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./input.component.scss'],
 })
 export class InputComponent {
-  @Input() value: string;
-  @Output() valueChange = new EventEmitter<string>();
-  @Input() label: string = '';
+  @Input() value = '';
+  @Input() label = '';
   @Input() type: 'text' | 'password' | 'textarea' = 'text';
-  @Input() placeholder: string = '';
-  @Input() required: boolean = false;
-  @Input() rowsCount: number = 10;
+  @Input() placeholder = '';
+  @Input() required = false;
+  @Input() rowsCount = 10;
+  @Output() valueChange = new EventEmitter<string>();
 
   onChange(event: Event): void {
     const value = (event.target as HTMLInputElement).value;

@@ -1,20 +1,17 @@
 $baseValue: 0.25rem;
 $spacingProperties: (
   "m": "margin",
-  "p": "padding"
+  "p": "padding",
 );
 $spacingDirection: (
   "t": "top",
   "r": "right",
   "b": "bottom",
-  "l": "left"
+  "l": "left",
 );
 
-@each $abbrName,
-$name in $spacingProperties {
-
-  @each $abbrDirection,
-  $direction in $spacingDirection {
+@each $abbrName, $name in $spacingProperties {
+  @each $abbrDirection, $direction in $spacingDirection {
     @for $i from 1 through 10 {
       .#{$abbrName}-#{$i} {
         #{$name}: $baseValue * $i * $i;
@@ -24,7 +21,7 @@ $name in $spacingProperties {
         #{$name}-#{$direction}: $baseValue * $i * $i;
       }
 
-      @if $abbrDirection =="l" {
+      @if $abbrDirection == "l" {
         .#{$abbrName}x-#{$i} {
           #{$name}-left: $baseValue * $i * $i;
           #{$name}-right: $baseValue * $i * $i;
@@ -37,14 +34,14 @@ $name in $spacingProperties {
       }
     }
 
-    @if $abbrName =="m" and ($abbrDirection =="l" or $abbrDirection =="r") {
+    @if $abbrName == "m" and ($abbrDirection == "l" or $abbrDirection == "r") {
       .#{$abbrName}#{$abbrDirection}-auto {
         #{$name}-#{$direction}: auto;
       }
     }
   }
 
-  @if $abbrName =="m" {
+  @if $abbrName == "m" {
     .#{$abbrName}-auto {
       #{$name}-left: auto;
       #{$name}-right: auto;

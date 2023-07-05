@@ -12,23 +12,23 @@ import { TabItemInterface } from 'src/interfaces/TabItem.interface';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnDestroy {
-  constructor(
-    private stateService: StateService,
-    private userService: UserService
-  ) {}
-
   tabs: TabItemInterface[] = [
     { id: 'login', label: 'Zaloguj się' },
     { id: 'registration', label: 'Utwórz konto' },
   ];
 
-  activeTab: string = this.tabs[0].id;
-  name: string = '';
-  password: string = '';
-  loading: boolean = false;
+  activeTab = this.tabs[0].id;
+  name = '';
+  password = '';
+  loading = false;
   error: string | string[] = '';
 
   private timeout: ReturnType<typeof setTimeout>;
+
+  constructor(
+    private stateService: StateService,
+    private userService: UserService
+  ) {}
 
   private showError(errorMessage: string | string[]): void {
     this.error = errorMessage;
@@ -38,7 +38,7 @@ export class LoginComponent implements OnDestroy {
     }, 5000);
   }
 
-  setActiveTab(newActiveTab: string) {
+  setActiveTab(newActiveTab: string): void {
     this.activeTab = newActiveTab;
   }
 
@@ -74,7 +74,7 @@ export class LoginComponent implements OnDestroy {
       });
   }
 
-  createUser() {
+  createUser(): void {
     this.loading = true;
 
     const body = {

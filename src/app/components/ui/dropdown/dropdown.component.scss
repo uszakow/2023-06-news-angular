@@ -1,5 +1,5 @@
-@import '/src/styles/variables';
-@import '/src/styles/functions';
+@import "/src/styles/variables";
+@import "/src/styles/functions";
 
 .dropdown {
   cursor: pointer;
@@ -20,7 +20,7 @@
       border-radius: $border-radius;
     }
 
-    ::ng-deep>* {
+    ::ng-deep > * {
       cursor: pointer;
       display: block;
       font-size: px(18);
@@ -28,7 +28,7 @@
       padding: px(4);
     }
 
-    ::ng-deep>*:not(:last-child) {
+    ::ng-deep > *:not(:last-child) {
       border-bottom: 1px solid $light-grey;
     }
   }

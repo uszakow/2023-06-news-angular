@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class TypographyComponent {
   @Input() type: 'title' | 'text';
-  @Input() classes: string;
+  @Input() classes = '';
 }

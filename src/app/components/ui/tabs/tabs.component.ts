@@ -8,6 +8,6 @@ import { TabItemInterface } from 'src/interfaces/TabItem.interface';
 })
 export class TabsComponent {
   @Input() tabs: TabItemInterface[] = [];
-  @Input() activeTab: string = '';
+  @Input() activeTab = '';
   @Output() tabChange = new EventEmitter<string>();
 }

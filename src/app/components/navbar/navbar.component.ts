@@ -8,9 +8,9 @@ import { UserInterface } from 'src/interfaces/User.interface';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private stateService: StateService) {}
-
   user: UserInterface | null = null;
+
+  constructor(private stateService: StateService) {}
 
   logout(): void {
     localStorage.removeItem('token');

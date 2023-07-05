@@ -22,7 +22,7 @@ export class NewsListComponent implements OnInit {
   getNewsList(): void {
     this.newsService.getNewsList().subscribe({
       next: (newsList: NewsInterface[]) => {
-        this.news.push(...newsList);
+        this.news = [...newsList];
       },
       error: (error) => {
         console.error(`ERROR:${error}`);

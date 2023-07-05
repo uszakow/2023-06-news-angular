@@ -44,7 +44,7 @@ export class ProfileDataChangeComponent {
     this.isModalOpen = false;
   }
 
-  changeUserData(field: 'name' | 'password') {
+  changeUserData(field: 'name' | 'password'): void {
     if (this.password !== this.passwordConfirmation) {
       this.error = 'Hasła się różnią.';
       return;
@@ -81,7 +81,7 @@ export class ProfileDataChangeComponent {
     }
   }
 
-  deleteUser() {
+  deleteUser(): void {
     const token = this.stateService.getToken();
     if (token) {
       this.loading = true;

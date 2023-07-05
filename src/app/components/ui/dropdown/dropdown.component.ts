@@ -10,11 +10,11 @@ export class DropdownComponent {
   @ContentChild('titleTemplate') titleTemplate: TemplateRef<any>;
   @ContentChild('contentTemplate') contentTemplate: TemplateRef<any>;
 
-  isOpen: boolean = false;
+  isOpen = false;
 
-  setIsOpen = (isOpen: boolean): void => {
+  setIsOpen(isOpen: boolean): void {
     this.isOpen = isOpen;
-  };
+  }
 
   get dropdownClasses(): string {
     return `dropdown ${this.type} relative`;

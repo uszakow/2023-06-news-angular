@@ -23,7 +23,7 @@ export class NewsAddComponent {
     private newsService: NewsService
   ) {}
 
-  createNews() {
+  createNews(): void {
     const body: NewsDto = {
       title: this.newsTitle,
       content: this.newsContent,
