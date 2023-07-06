@@ -1,7 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { StateService } from './services/state.service';
 import { Subscription, combineLatest } from 'rxjs';
-import { NavigationEnd, NavigationStart, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiService } from './services/api.service';
 
 @Component({
@@ -10,28 +10,25 @@ import { ApiService } from './services/api.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
-  private routerSubscription: Subscription;
   private unauthorizedErrorSubscription: Subscription;
   private redirectSubscription: Subscription;
 
+  loading: boolean;
+
   constructor(
     private router: Router,
+    private cd: ChangeDetectorRef,
     private apiService: ApiService,
-    public stateService: StateService
+    private stateService: StateService
   ) {}
 
   ngOnInit(): void {
-    this.stateService.updateUser();
-
-    // loader when route changing
-    this.routerSubscription = this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        this.stateService.updateLoading(true);
-      }
-      if (event instanceof NavigationEnd) {
-        this.stateService.updateLoading(false);
-      }
+    this.stateService.loading$.subscribe((loading) => {
+      this.loading = loading;
+      this.cd.detectChanges();
     });
+
+    this.stateService.updateUser();
 
     // manage incorrect token
     this.unauthorizedErrorSubscription = this.apiService
@@ -58,7 +55,6 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.routerSubscription.unsubscribe();
     this.unauthorizedErrorSubscription.unsubscribe();
     this.redirectSubscription.unsubscribe();
   }

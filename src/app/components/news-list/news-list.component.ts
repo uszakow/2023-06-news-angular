@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { finalize } from 'rxjs';
 import { NewsService } from 'src/app/services/news.service';
 import { StateService } from 'src/app/services/state.service';
 import { NewsInterface } from 'src/interfaces/News.interface';
@@ -20,14 +21,22 @@ export class NewsListComponent implements OnInit {
   ) {}
 
   getNewsList(): void {
-    this.newsService.getNewsList().subscribe({
-      next: (newsList: NewsInterface[]) => {
-        this.news = [...newsList];
-      },
-      error: (error) => {
-        console.error(`ERROR:${error}`);
-      },
-    });
+    this.stateService.updateLoading(true);
+    this.newsService
+      .getNewsList()
+      .pipe(
+        finalize(() => {
+          this.stateService.updateLoading(false);
+        })
+      )
+      .subscribe({
+        next: (newsList: NewsInterface[]) => {
+          this.news = [...newsList];
+        },
+        error: (error) => {
+          console.error(`ERROR:${error}`);
+        },
+      });
   }
 
   trackByNewsId(_: number, news: NewsInterface): string {

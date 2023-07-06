@@ -1,4 +1,4 @@
-<ng-container *ngIf="news; else notFoundTemplate">
+<ng-container *ngIf="news && !loading">
   <app-typography type="title">{{news.title}}</app-typography>
 
   <p *ngFor="let item of content" class="news-p">
@@ -10,6 +10,5 @@
   </div>
 </ng-container>
 
-<ng-template #notFoundTemplate>
-  <app-not-found />
-</ng-template>
+
+<app-not-found *ngIf="!news && !loading" />

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, tap } from 'rxjs';
+import { BehaviorSubject, finalize, tap } from 'rxjs';
 import { UserInterface } from 'src/interfaces/User.interface';
 import { UserService } from './user.service';
 
@@ -32,15 +32,17 @@ export class StateService {
           tap((user: UserInterface) => {
             this.tokenSubject.next(token);
             this.userSubject.next(user);
+          }),
+          finalize(() => {
+            this.updateLoading(false);
           })
         )
         .subscribe();
     } else {
       this.tokenSubject.next(null);
       this.userSubject.next(null);
+      this.updateLoading(false);
     }
-
-    this.updateLoading(false);
   }
 
   // getter for a value from the state, without subscribe function
