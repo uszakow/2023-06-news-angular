@@ -25,6 +25,7 @@ import { ProfileDataChangeComponent } from './components/profile/profile-data-ch
 import { NewsPreviewComponent } from './components/news-list/news-preview/news-preview.component';
 import { NewsManageModalComponent } from './components/news-list/news-manage-modal/news-manage-modal.component';
 import { NewsAddComponent } from './components/news-list/news-add/news-add.component';
+import { HideOnMouseleaveDirective } from './directives/hide-on-mouseleave.directive';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { NewsAddComponent } from './components/news-list/news-add/news-add.compo
     NewsPreviewComponent,
     NewsManageModalComponent,
     NewsAddComponent,
+    HideOnMouseleaveDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule],
   providers: [],

@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
+import { Component, ContentChild, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'app-dropdown',
@@ -6,20 +6,15 @@ import { Component, ContentChild, Input, TemplateRef } from '@angular/core';
   styleUrls: ['./dropdown.component.scss'],
 })
 export class DropdownComponent {
-  @Input() type: 'simple' = 'simple';
   @ContentChild('titleTemplate') titleTemplate: TemplateRef<any>;
   @ContentChild('contentTemplate') contentTemplate: TemplateRef<any>;
 
-  isOpen = false;
-
-  setIsOpen(isOpen: boolean): void {
-    this.isOpen = isOpen;
-  }
-
-  get dropdownClasses(): string {
-    return `dropdown ${this.type} relative`;
-  }
-  get drodpownContentClasses(): string {
-    return `${!this.isOpen ? 'none' : ''} dropdown-content`;
-  }
+  // an example of adding classes without the appHideOnMouseleave directive
+  // isOpen = false;
+  // setIsOpen(isOpen: boolean): void {
+  //   this.isOpen = isOpen;
+  // }
+  // get drodpownContentClasses(): string {
+  //   return `${!this.isOpen ? 'none' : ''} dropdown-content`;
+  // }
 }

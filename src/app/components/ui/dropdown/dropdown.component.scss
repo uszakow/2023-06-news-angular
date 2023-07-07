@@ -7,18 +7,15 @@
   &-content {
     position: absolute;
     top: 100%;
-    width: 100%;
+    right: px(-16);
     z-index: $z-regular;
+    width: 100%;
+    min-width: px(180);
     display: flex;
     flex-direction: column;
-
-    .simple & {
-      right: px(-16);
-      min-width: px(180);
-      background-color: $background;
-      border: 1px solid $light-grey;
-      border-radius: $border-radius;
-    }
+    background-color: $background;
+    border: 1px solid $light-grey;
+    border-radius: $border-radius;
 
     ::ng-deep > * {
       cursor: pointer;

@@ -1,8 +1,7 @@
-<div [class]="dropdownClasses" (mouseover)="type === 'simple' && setIsOpen(true)"
-  (mouseleave)="type === 'simple' && setIsOpen(false)">
+<div class="dropdown relative" appHideOnMouseleave=".dropdown-content">
   <ng-container *ngTemplateOutlet="titleTemplate"></ng-container>
 
-  <div [class]="drodpownContentClasses">
+  <div class="dropdown-content">
     <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
   </div>
 </div>
