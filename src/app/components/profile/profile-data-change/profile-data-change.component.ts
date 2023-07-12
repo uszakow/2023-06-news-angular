@@ -16,7 +16,7 @@ export class ProfileDataChangeComponent {
   password = '';
   passwordConfirmation = '';
   loading = false;
-  error = '';
+  error: string | string[] = '';
 
   constructor(
     private stateService: StateService,
