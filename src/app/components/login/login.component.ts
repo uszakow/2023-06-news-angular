@@ -5,6 +5,7 @@ import { StateService } from 'src/app/services/state.service';
 import { UserService } from 'src/app/services/user.service';
 import { CustomResponseInterface } from 'src/interfaces/CustomResponse.interface';
 import { TabItemInterface } from 'src/interfaces/TabItem.interface';
+import { UserDto } from 'src/interfaces/User.dto';
 
 @Component({
   selector: 'app-login',
@@ -45,7 +46,7 @@ export class LoginComponent implements OnDestroy {
   async loginUser(): Promise<void> {
     this.loading = true;
 
-    const body = {
+    const body: UserDto = {
       name: this.name,
       password: this.password,
     };
@@ -77,7 +78,7 @@ export class LoginComponent implements OnDestroy {
   createUser(): void {
     this.loading = true;
 
-    const body = {
+    const body: UserDto = {
       name: this.name,
       password: this.password,
     };

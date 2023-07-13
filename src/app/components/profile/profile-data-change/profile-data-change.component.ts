@@ -75,7 +75,7 @@ export class ProfileDataChangeComponent {
           },
           error: (error: HttpErrorResponse) => {
             this.error =
-              error.error?.message || 'Nie udało się zmienić nazwy użytkownika';
+              error.error?.message || 'Nie udało się zmienić danych użytkownika.';
           },
         });
     }
@@ -99,7 +99,7 @@ export class ProfileDataChangeComponent {
           },
           error: (error: HttpErrorResponse) => {
             this.error =
-              error.error?.message || 'Nie udało się usunąć konto użytkownika';
+              error.error?.message || 'Nie udało się usunąć konto użytkownika.';
           },
         });
     }

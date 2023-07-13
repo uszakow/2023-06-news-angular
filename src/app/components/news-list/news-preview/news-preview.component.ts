@@ -62,7 +62,7 @@ export class NewsPreviewComponent implements OnInit, OnChanges {
           },
           error: (error: HttpErrorResponse) => {
             this.error =
-              error.error?.message || 'Nie udało się zaktualizować wiadomość';
+              error.error?.message || 'Nie udało się zaktualizować wiadomość.';
           },
         });
     }
@@ -86,7 +86,7 @@ export class NewsPreviewComponent implements OnInit, OnChanges {
           },
           error: (error: HttpErrorResponse) => {
             this.error =
-              error.error?.message || 'Nie udałos się usunąć wiadomość';
+              error.error?.message || 'Nie udałos się usunąć wiadomość.';
           },
         });
     }
