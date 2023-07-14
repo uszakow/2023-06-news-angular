@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { NewsListComponent } from './components/news-list/news-list.component';
-import { NewsDetailsComponent } from './components/news-details/news-details.component';
-import { LoginComponent } from './components/login/login.component';
-import { ProfileComponent } from './components/profile/profile.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { LoginComponent } from './modules/user/components/login/login.component';
+import { NewsDetailsComponent } from './modules/news/components/news-details/news-details.component';
+import { NewsListComponent } from './modules/news/components/news-list/news-list.component';
+import { NotFoundComponent } from './modules/shared/components/not-found/not-found.component';
+import { ProfileComponent } from './modules/user/components/profile/profile.component';
 
 const routes: Routes = [
   { path: '', component: NewsListComponent },
