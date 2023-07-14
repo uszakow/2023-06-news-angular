@@ -6,7 +6,7 @@ import { NewsListComponent } from './components/news-list/news-list.component';
 import { NewsManageModalComponent } from './components/news-list/news-manage-modal/news-manage-modal.component';
 import { NewsPreviewComponent } from './components/news-list/news-preview/news-preview.component';
 import { SharedModule } from '../shared/shared.module';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+import { NewsRoutingModule } from './news-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,6 @@ import { AppRoutingModule } from 'src/app/app-routing.module';
     NewsManageModalComponent,
     NewsAddComponent,
   ],
-  imports: [CommonModule, SharedModule, AppRoutingModule],
+  imports: [CommonModule, NewsRoutingModule, SharedModule],
 })
 export class NewsModule {}

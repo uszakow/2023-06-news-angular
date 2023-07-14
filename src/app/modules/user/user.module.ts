@@ -4,10 +4,11 @@ import { LoginComponent } from 'src/app/modules/user/components/login/login.comp
 import { ProfileComponent } from 'src/app/modules/user/components/profile/profile.component';
 import { ProfileDataChangeComponent } from 'src/app/modules/user/components/profile/profile-data-change/profile-data-change.component';
 import { SharedModule } from '../shared/shared.module';
+import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
   declarations: [LoginComponent, ProfileComponent, ProfileDataChangeComponent],
   exports: [LoginComponent, ProfileComponent, ProfileDataChangeComponent],
-  imports: [CommonModule, SharedModule],
+  imports: [CommonModule, UserRoutingModule, SharedModule],
 })
 export class UserModule {}

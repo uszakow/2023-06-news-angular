@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { finalize } from 'rxjs';
@@ -18,7 +18,6 @@ export class NewsDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private cd: ChangeDetectorRef,
     private titleService: Title,
     public stateService: StateService,
     private newsService: NewsService
@@ -29,7 +28,6 @@ export class NewsDetailsComponent implements OnInit {
 
     this.stateService.loading$.subscribe((loading) => {
       this.loading = loading;
-      this.cd.detectChanges();
     });
 
     this.stateService.updateLoading(true);
