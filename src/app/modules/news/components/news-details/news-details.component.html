@@ -1,0 +1,14 @@
+<ng-container *ngIf="news && !loading">
+  <app-typography type="title">{{news.title}}</app-typography>
+
+  <p *ngFor="let item of content" class="news-p">
+    {{item}}
+  </p>
+
+  <div class="mt-2">
+    Autor: <span class="author">{{news.author.name}}</span>
+  </div>
+</ng-container>
+
+
+<app-not-found *ngIf="!news && !loading" />

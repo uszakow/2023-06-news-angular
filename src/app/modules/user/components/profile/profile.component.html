@@ -1,0 +1,10 @@
+<app-typography type="title" classes="flex flex-justify-between flex-align-end">
+  <span>Nazwa użytkownika: {{user?.name}}</span>
+  <app-button type="inline" label="Wyloguj się" (clickButton)="logout()" />
+</app-typography>
+
+<app-typography type="text" classes="block">
+  {{user?.name}} stworzył {{user?.news?.length ?? 0 | showNewsCount}}
+</app-typography>
+
+<app-profile-data-change />

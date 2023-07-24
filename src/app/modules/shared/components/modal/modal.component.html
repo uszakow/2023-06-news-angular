@@ -1,0 +1,14 @@
+<div *ngIf="isOpen" class="modal flex-center">
+  <div class="modal-curtain" (click)="closeModal.emit()"></div>
+  <div class="modal-overlap">
+    <div [ngClass]="['modal-wrap', classes, 'relative p-2']">
+      <div class="modal-title flex flex-justify-between pb-1 mb-2">
+        <h2 class="modal-title-text">{{title}}</h2>
+        <button class="modal-title-button relative ml-2" (click)="closeModal.emit()"></button>
+      </div>
+      <div>
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

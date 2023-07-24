@@ -1,0 +1,20 @@
+<div class="login relative m-auto mt-3">
+  <app-tabs [tabs]="tabs" [activeTab]="activeTab" (tabChange)="setActiveTab($event)" />
+
+  <div class="login-wrap px-2 py-3">
+    <app-typography type="title">
+      {{activeTab === 'login' ? 'Dane użytkownika:' : 'Nowy użytkownik:'}}
+    </app-typography>
+
+    <app-input [(value)]="name" label="Nazwa użytkownika" [required]="true" placeholder="Wprowadź nazwę użytkownika" />
+
+    <app-input type="password" [(value)]="password" label="Hasło"
+      [placeholder]="activeTab === 'login' ? 'Wprowadź hasło' : 'Hasło ma zawierać co najmniej 4 znaki'"
+      [required]="true" />
+
+    <app-button classes="mt-2 mb-1 m-auto" [label]="activeTab === 'login' ? 'Zaloguj się' : 'Utwórz konto'"
+      [loading]="loading" (clickButton)="activeTab === 'login' ? loginUser() : createUser()" />
+
+    <app-error-message *ngIf="error" [message]="error" />
+  </div>
+</div>

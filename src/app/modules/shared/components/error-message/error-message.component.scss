@@ -1,0 +1,10 @@
+@import "/src/styles/variables";
+@import "/src/styles/functions";
+
+.error-message {
+  position: absolute;
+  right: 0;
+  left: 0;
+  font-size: px(12);
+  color: $error;
+}

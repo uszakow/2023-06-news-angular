@@ -1,0 +1,11 @@
+<app-modal classes="news-modal" [title]="modalTitle" [isOpen]="isOpen" (closeModal)="closeModal.emit()">
+  <app-input [value]="newsTitle" label="Tytuł wiadomości" placeholder="Wpisz tytuł wiadomości" [required]="true"
+    (valueChange)="changeNewsTitle.emit($event)" />
+
+  <app-input type="textarea" [value]="newsContent" label="Treść wiadomości" placeholder="Wpisz treść wiadomości"
+    [required]="true" (valueChange)="changeNewsContent.emit($event)" />
+
+  <app-button classes="mt-2 m-auto" label="Opublikuj" [loading]="loading" (clickButton)="manageNews.emit()" />
+
+  <app-error-message *ngIf="error" [message]="error" />
+</app-modal>

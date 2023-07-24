@@ -1,0 +1,13 @@
+<div class="input" [title]="required ? 'To pole jest obowiązkowe' : ''">
+  <label *ngIf="label" [htmlFor]="label">
+    {{label}}{{required && ' *'}}
+  </label>
+
+  <textarea *ngIf="type === 'textarea'; else input" [id]="label" [value]="value" [placeholder]="placeholder"
+    [required]="required" [rows]="rowsCount" (change)="onChange($event)"></textarea>
+
+  <ng-template #input>
+    <input [id]="label" [type]="type" [value]="value" [placeholder]="placeholder" [required]="required"
+      (input)="onChange($event)" />
+  </ng-template>
+</div>
